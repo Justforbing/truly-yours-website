@@ -1,128 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Truly Yours - Customized Bottled Water Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
-
-<!-- Add favicon -->
-<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> 
+    <meta charset="UTF-8">
+    <title>Truly Yours - Customized Bottled Water Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elevate your brand with Truly Yours customized bottled water solutions. We offer custom label design, flexible order quantities, and premium bottle shapes to enhance your customer experience."> 
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="Truly Yours - Customized Bottled Water">
+    <meta property="og:description" content="Enhance your brand with our unique bottled water solutions.">
+    <meta property="og:image" content="assets/images/og_image.jpg"> 
+    <meta property="og:url" content="your-website-url"> 
 </head>
 <body>
-<!-- Header Section -->
-<header>
-<div class="container">
-<a href="#" class="logo">
-<img src="assets/images/logo.png" alt="Truly Yours Logo"> 
-</a>
-<nav>
-<ul>
-<li><a href="#services">Services</a></li>
-<li><a href="#benefits">Benefits</a></li>
-<li><a href="#clients">Clients</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</div>
-</header>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-<div class="container">
-<h1>Elevate Your Brand with <span>Customized Bottled Water</span></h1>
-<p>Make every sip a branding opportunity.</p>
-<a href="#contact" class="btn">Get Started</a>
-</div>
-<div class="bottle-animation">
-<img src="assets/images/bottle_generic.png" alt="Generic Bottle" id="bottleImage"> 
-</div>
-</section>
+    <header>
+        <div class="container">
+            <a href="#" class="logo" aria-label="Truly Yours Homepage">
+                <img src="assets/images/logo.png" alt="Truly Yours Logo">
+            </a>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button> 
+            </nav>
+        </div>
+    </header>
 
-<!-- Services Section -->
-<section class="services" id="services">
-<div class="container">
-<h2>Our Services</h2>
-<div class="services-grid">
-<div class="service-item">
-<img src="assets/images/service_custom_label.png" alt="Custom Labels"> 
-<h3>Custom Label Design</h3>
-<p>Create unique labels that reflect your brand's identity.</p>
-</div>
-<div class="service-item">
-<img src="assets/images/service_small_orders.png" alt="Flexible Orders"> 
-<h3>Flexible Order Quantities</h3>
-<p>No large minimum orders required – perfect for events and promotions.</p>
-</div>
-<div class="service-item">
-<img src="assets/images/service_premium_bottles.png" alt="Premium Bottles"> 
-<h3>Premium Bottle Shapes</h3>
-<p>Stand out with customized bottle shapes (Coming Soon).</p>
-</div>
-</div>
-</div>
-</section>
+    <main> 
+        <section class="hero" id="home">
+            <div class="container">
+                <h1 class="animate__animated animate__fadeInUp">Elevate Your Brand with <span>Customized Bottled Water</span></h1> 
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">Make every sip a branding opportunity.</p>
+                <a href="#contact" class="btn animate__animated animate__fadeInUp animate__delay-2s">Get Started</a>
+            </div>
+            <div class="bottle-animation"> 
+                <img src="assets/images/bottle_generic.png" alt="Generic Bottle" id="bottleImage">
+            </div>
+        </section>
 
-<!-- Benefits Section -->
-<section class="benefits" id="benefits">
-<div class="container">
-<h2>Why Choose Us?</h2>
-<ul>
-<li>Enhance your branding without hefty commitments.</li>
-<li>Surprise your customers with themed bottles during festivals and special occasions.</li>
-<li>No deposit required – start small and grow.</li>
-<li>Competitive pricing with high margins for your business.</li>
-</ul>
-</div>
-</section>
+        <section class="services" id="services">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">Our Services</h2>
+                <div class="services-grid">
+                    <article class="service-item animate__animated animate__fadeInUp"> 
+                        <div class="service-icon"> 
+                            <img src="assets/images/service_custom_label.png" alt="Custom Labels">
+                        </div>
+                        <h3>Custom Label Design</h3>
+                        <p>Create unique labels that reflect your brand's identity.</p>
+                    </article>
+                    <article class="service-item animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="service-icon">
+                            <img src="assets/images/service_small_orders.png" alt="Flexible Orders">
+                        </div>
+                        <h3>Flexible Order Quantities</h3>
+                        <p>No large minimum orders required – perfect for events and promotions.</p>
+                    </article>
+                    <article class="service-item animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="service-icon">
+                            <img src="assets/images/service_premium_bottles.png" alt="Premium Bottles">
+                        </div>
+                        <h3>Premium Bottle Shapes</h3>
+                        <p>Stand out with customized bottle shapes (Coming Soon).</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-<!-- Clients Section -->
-<section class="clients" id="clients">
-<div class="container">
-<h2>Our Clients</h2>
-<div class="clients-logos">
-<!-- Client logos to be added here -->
-<!-- Example: <img src="assets/client1.png" alt="Client 1"> -->
-</div>
-</div>
-</section>
+        <section class="benefits" id="benefits">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">Why Choose Us?</h2>
+                <ul>
+                    <li class="animate__animated animate__fadeInUp">Enhance your branding without hefty commitments.</li>
+                    <li class="animate__animated animate__fadeInUp animate__delay-1s">Surprise your customers with themed bottles during festivals and special occasions.</li>
+                    <li class="animate__animated animate__fadeInUp animate__delay-2s">No deposit required – start small and grow.</li>
+                    <li class="animate__animated animate__fadeInUp animate__delay-3s">Competitive pricing with high margins for your business.</li>
+                </ul>
+            </div>
+        </section>
 
-<!-- Testimonials Section -->
-<section class="testimonials">
-<div class="container">
-<h2>What Our Clients Say</h2>
-<div class="testimonials-slider">
-<div class="testimonial-item">
-<p>"Truly Yours has transformed our customer experience. Our branded bottles are a hit!"</p>
-<h4>- Cafe Mocha</h4>
-</div>
-<!-- Additional testimonials can be added here -->
-</div>
-</div>
-</section>
+        <section class="clients" id="clients">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">Our Clients</h2>
+                <div class="clients-logos">
+                    <!-- Client logos will be added here -->
+                </div>
+            </div>
+        </section>
 
-<!-- Call to Action Section -->
-<section class="cta" id="contact">
-<div class="container">
-<h2>Ready to Customize Your Bottles?</h2>
-<p>Contact us today to get started.</p>
-<a href="mailto:contact@trulyyours.com" class="btn">Email Us</a>
-</div>
-</section>
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">What Our Clients Say</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-item active  animate__animated animate__fadeInUp">
+                        <p>"Truly Yours has transformed our customer experience. Our branded bottles are a hit!"</p>
+                        <h4>- Cafe Mocha</h4>
+                    </div>
+                    <!-- Add more testimonial items here -->
+                </div>
+                <!-- Add navigation buttons for the slider here (optional) -->
+            </div>
+        </section>
+    </main>
 
-<!-- Footer Section -->
-<footer>
-<div class="container">
-<p>© 2023 Truly Yours. All rights reserved.</p>
-<div class="social-media">
-<a href="#"><img src="assets/images/icon_facebook.png" alt="Facebook"></a> 
-<a href="#"><img src="assets/images/icon_instagram.png" alt="Instagram"></a> 
-<a href="#"><img src="assets/images/icon_linkedin.png" alt="LinkedIn"></a> 
-</div>
-</div>
-</footer>
+    <aside class="cta" id="contact"> 
+        <div class="container">
+            <h2 class="animate__animated animate__fadeInUp">Ready to Customize Your Bottles?</h2>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Contact us today to get started.</p>
+            <a href="mailto:contact@trulyyours.com" class="btn animate__animated animate__fadeInUp animate__delay-2s">Email Us</a>
+        </div>
+    </aside>
 
-<!-- JavaScript -->
-<script src="script.js"></script>
+    <footer>
+        <div class="container">
+            <p>© 2023 Truly Yours. All rights reserved.</p>
+            <div class="social-media">
+                <a href="#" aria-label="Truly Yours on Facebook"><img src="assets/images/icon_facebook.png" alt="Facebook"></a>
+                <a href="#" aria-label="Truly Yours on Instagram"><img src="assets/images/icon_instagram.png" alt="Instagram"></a>
+                <a href="#" aria-label="Truly Yours on LinkedIn"><img src="assets/images/icon_linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script> 
 </body>
 </html>
