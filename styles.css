@@ -9,7 +9,7 @@ body {
     font-family: 'Lato', sans-serif;
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 /* Container */
@@ -22,22 +22,22 @@ body {
 
 /* Header */
 header {
-    background: rgba(255, 255, 255, 0.8); 
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent header */
     padding: 20px 0;
-    position: fixed; 
+    position: fixed;
     width: 100%;
     top: 0;
-    z-index: 10; /* Increased z-index */
-    backdrop-filter: blur(5px); 
+    z-index: 10; /* Increased z-index to be above other content */
+    backdrop-filter: blur(5px); /* Add a blur effect to the header */
 }
 
 header .logo img {
     height: 80px;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease; /* Add transition for logo hover effect */
 }
 
 header .logo img:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Scale up logo on hover */
 }
 
 header nav {
@@ -71,36 +71,36 @@ header nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60vh; /* Adjusted height */
-    z-index: -3; /* Changed z-index */
+    height: 60vh; /* Adjust height as needed */
+    z-index: -3; /* Place behind other content */
     overflow: hidden;
 }
 
 .bottle-background img {
-    width: auto; 
+    width: auto; /* Allow image to scale naturally */
     height: 100%;
-    object-fit: cover; 
-    transform: translateX(-20%); 
+    object-fit: cover; /* Cover the background area */
+    transform: translateX(-20%); /* Adjust positioning */
 }
 
 /* Hero Section */
 .hero {
-    background-color: rgba(255, 255, 255, 0.9); 
-    padding: 100px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 100px 0; /* Increased padding to push down from bottle background */
+    text-align: center; 
+    position: relative; /* For water drop animation */
+    overflow: hidden; /* To contain the water drop animation */
 }
 
-.hero-content { 
+.hero-content { /* Added a container for the hero text content */
     position: relative;
-    z-index: 2; 
+    z-index: 2; /* Ensure text is on top of the bottle animation */
 }
 
 .hero h1 {
     font-size: 3em;
     margin-bottom: 1em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility */
 }
 
 .hero h1 span {
@@ -119,43 +119,25 @@ header nav ul li a:hover {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transitions for hover effect */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .hero .btn:hover {
-    background-color: #e0c300; 
+    background-color: #e0c300; /* Darken button color on hover */
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-}
-
-/* Bottle Animation (Enhancement - moved to background) */
-.bottle-animation {
-    position: absolute;
-    bottom: 20%; 
-    left: 50%;
-    transform: translateX(-50%); 
-    width: 150px; 
-    height: auto;
-    opacity: 0.8; 
-    z-index: 1; 
-}
-
-.bottle-animation img {
-    width: 100%;
-    transition: all 1s ease-in-out;
-}
+} 
 
 /* Services Section */
 .services {
-    padding: 120px 0 80px 0; /* Added top padding */
+    padding: 120px 0 80px 0; /* Add top padding for better spacing */
     background: url('assets/images/services_background.jpg') no-repeat center center/cover; 
-    color: white; 
+    color: white; /* White text for better visibility */
 }
 
 .services h2 {
     text-align: center;
     margin-bottom: 50px;
-    color: #333;
 }
 
 .services-grid {
@@ -173,50 +155,50 @@ header nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: white; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transitions for hover effect */
 }
 
 .service-item:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px); /* Move item up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .service-icon {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #007bff; 
+    display: flex; /* Use flexbox for better centering */
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Increased size */
+    height: 100px;
+    border-radius: 10px; /* Rounded corners */
+    background-color: rgba(0, 123, 255, 0.6); /* Lighter blue, more transparent */
     color: white;
-    margin-bottom: 20px;
-    line-height: 80px; 
+    margin: 20px auto; /* Center horizontally */
     transition: background-color 0.3s ease;
 }
 
 .service-icon img {
-    width: 40px; 
-    vertical-align: middle;
+    width: 50px; /* Adjust icon size as needed */ 
 }
 
 .service-item:hover .service-icon {
-    background-color: #0056b3; 
+    background-color: #0056b3; /* Darken icon background on hover */
 }
 
 .service-item h3 {
     margin-bottom: 10px;
-    color: #333; 
+    color: #333;
 }
 
 .service-item p {
-    color: #555; 
+    color: #555;
 }
 
 /* Benefits Section */
 .benefits {
     padding: 80px 0;
     background: url('assets/images/benefits_background.jpg') no-repeat center center/cover;
-    color: white; 
-    position: relative;
+    color: white; /* White text for better visibility */
+    position: relative; /* For water drop animation */
     overflow: hidden; 
 }
 
@@ -232,13 +214,16 @@ header nav ul li a:hover {
 }
 
 .benefits ul li {
-    padding: 15px 0 15px 60px; 
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    position: relative;
+    padding: 15px 0 15px 60px; /* Adjusted padding */
+    font-size: 1.1em; 
+    margin-bottom: 20px; 
+    color: #212529; /* Darker text color */
+    background-color: rgba(255, 255, 255, 0.7); /* More opaque background */
+    border-radius: 5px; /* Added rounded corners */
+    position: relative; /* To position the checkmark icon */
 }
 
-.checkmark-icon {
+.checkmark-icon { /* Style for the checkmark icon */
     position: absolute;
     left: 10px; 
     top: 50%;
@@ -373,7 +358,7 @@ footer .social-media a {
 }
 
 footer .social-media a:hover {
-    transform: translateY(-3px); 
+    transform: translateY(-3px); /* Move icons up slightly on hover */
 }
 
 footer .social-media img {
@@ -431,13 +416,26 @@ footer .social-media img {
 /* Water Drop Animation */
 .water-drop {
     position: absolute;
-    width: 10px; /* Adjust size as needed */
-    height: 10px;
-    background-color: rgba(0, 123, 255, 0.8); /* Light blue color */
-    border-radius: 50%;
-    opacity: 0; /* Initially hidden */
-    animation: water-drop-animation 1s ease-out forwards; /* Apply animation */
-    pointer-events: none; /* Make drops non-clickable */
+    width: 20px; /* Adjusted size */
+    height: 20px;
+    background-image: url('assets/images/water-drop.png'); /* Use a water drop image */
+    background-size: contain;
+    background-repeat: no-repeat; 
+    opacity: 0;
+    animation: water-drop-animation 1s ease-out forwards; 
+    pointer-events: none;
+}
+
+.water-splash { 
+    position: absolute;
+    width: 40px; /* Larger size for splash */
+    height: 40px;
+    background-image: url('assets/images/water-splash.png'); /* Use a splash image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0; 
+    animation: water-splash-animation 0.5s ease-out forwards;
+    pointer-events: none;
 }
 
 @keyframes water-drop-animation {
@@ -446,10 +444,21 @@ footer .social-media img {
         transform: scale(0);
     }
     50% {
-        transform: scale(1.2); 
+        transform: scale(1.2);
     }
     100% {
         opacity: 0;
         transform: scale(0);
+    }
+}
+
+@keyframes water-splash-animation {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5); 
     }
 }
