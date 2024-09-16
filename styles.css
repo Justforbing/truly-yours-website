@@ -22,13 +22,13 @@ body {
 
 /* Header */
 header {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent header */
+    background: rgba(255, 255, 255, 0.8); 
     padding: 20px 0;
     position: fixed; 
     width: 100%;
     top: 0;
-    z-index: 100; 
-    backdrop-filter: blur(5px); /* Add a blur effect to the header */
+    z-index: 10; /* Increased z-index */
+    backdrop-filter: blur(5px); 
 }
 
 header .logo img {
@@ -67,48 +67,156 @@ header nav ul li a:hover {
 
 /* Bottle Animation Background */
 .bottle-background {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50vh; /* Adjust height as needed */
-    z-index: -2; /* Place behind other content */
+    height: 60vh; /* Adjusted height */
+    z-index: -3; /* Changed z-index */
     overflow: hidden;
 }
 
 .bottle-background img {
-    width: auto; /* Allow image to scale naturally */
+    width: auto; 
     height: 100%;
-    object-fit: cover; /* Cover the background area */
-    transform: translateX(-20%); /* Adjust positioning */
+    object-fit: cover; 
+    transform: translateX(-20%); 
 }
 
 /* Hero Section */
 .hero {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 100px 0; /* Increased padding to push down from bottle background */
-    text-align: center; 
-    position: relative; /* For water drop animation */
-    overflow: hidden; /* To contain the water drop animation */
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* ... (rest of the hero section styles remain the same) ... */
+.hero-content { 
+    position: relative;
+    z-index: 2; 
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.hero h1 span {
+    color: #ffd700;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+}
+
+.hero .btn {
+    background: #ffd700;
+    color: #333;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.hero .btn:hover {
+    background-color: #e0c300; 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Bottle Animation (Enhancement - moved to background) */
+.bottle-animation {
+    position: absolute;
+    bottom: 20%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 150px; 
+    height: auto;
+    opacity: 0.8; 
+    z-index: 1; 
+}
+
+.bottle-animation img {
+    width: 100%;
+    transition: all 1s ease-in-out;
+}
 
 /* Services Section */
 .services {
-    padding: 80px 0;
+    padding: 120px 0 80px 0; /* Added top padding */
     background: url('assets/images/services_background.jpg') no-repeat center center/cover; 
-    color: white; /* White text for better visibility */
+    color: white; 
 }
 
-/* ... (rest of the services section styles) ... */ 
+.services h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.service-icon {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #007bff; 
+    color: white;
+    margin-bottom: 20px;
+    line-height: 80px; 
+    transition: background-color 0.3s ease;
+}
+
+.service-icon img {
+    width: 40px; 
+    vertical-align: middle;
+}
+
+.service-item:hover .service-icon {
+    background-color: #0056b3; 
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+    color: #333; 
+}
+
+.service-item p {
+    color: #555; 
+}
 
 /* Benefits Section */
 .benefits {
     padding: 80px 0;
     background: url('assets/images/benefits_background.jpg') no-repeat center center/cover;
-    color: white; /* White text for better visibility */
-    position: relative; /* For water drop animation */
+    color: white; 
+    position: relative;
     overflow: hidden; 
 }
 
@@ -124,13 +232,13 @@ header nav ul li a:hover {
 }
 
 .benefits ul li {
-    padding: 15px 0 15px 60px; /* Adjusted padding */
+    padding: 15px 0 15px 60px; 
     font-size: 1.1em;
     margin-bottom: 20px;
-    position: relative; /* To position the checkmark icon */
+    position: relative;
 }
 
-.checkmark-icon { /* Style for the checkmark icon */
+.checkmark-icon {
     position: absolute;
     left: 10px; 
     top: 50%;
@@ -139,7 +247,186 @@ header nav ul li a:hover {
     height: auto;
 }
 
-/* ... (rest of the styles) ... */
+/* Clients Section */
+.clients {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+.clients h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.clients-logos img {
+    margin: 20px;
+    width: 150px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease; 
+}
+
+.clients-logos img:hover {
+    opacity: 1; 
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background-color: #e9ecef; 
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333; 
+}
+
+.testimonials-slider {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px; 
+    background-color: rgba(255,255,255, 0.8); 
+    border-radius: 8px; 
+}
+
+.testimonial-item {
+    display: none; 
+}
+
+.testimonial-item.active {
+    display: block; 
+}
+
+.testimonial-item p {
+    font-size: 1.2em; 
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.testimonial-item h4 {
+    font-size: 1em; 
+    color: #333; 
+}
+
+/* Call to Action Section */
+.cta {
+    padding: 80px 0;
+    background: #ffd700;
+    color: #333;
+    text-align: center;
+}
+
+.cta h2 {
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.cta .btn {
+    background: #333;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}
+
+.cta .btn:hover {
+    background-color: #1a1a1a; 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center; 
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer .social-media {
+    display: inline-block; 
+}
+
+footer .social-media a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.3s ease; 
+}
+
+footer .social-media a:hover {
+    transform: translateY(-3px); 
+}
+
+footer .social-media img {
+    width: 20px; 
+    height: auto;
+}
+
+/* Mobile Navigation Styles */
+.nav-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 101; 
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Show the hamburger icon on smaller screens */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        float: right; 
+    }
+
+    header nav ul {
+        display: none; 
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background: #fff;
+        text-align: center; 
+    }
+
+    header nav ul.show {
+        display: block;
+    }
+
+    header nav ul li {
+        display: block; 
+        margin: 10px 0;
+    }
+}
 
 /* Water Drop Animation */
 .water-drop {
