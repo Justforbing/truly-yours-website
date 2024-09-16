@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
 
-        if (scrollPosition > 200) {
-            bottleImage.src = 'assets/images/bottle_trulyyours.png'; 
-        } else {
-            bottleImage.src = 'assets/images/bottle_generic.png'; 
-        }
+        // Change bottle animation when "Why Choose Us" is in viewport
+        const whyChooseUsSection = document.getElementById('benefits');
+
+        if (isElementInViewport(whyChooseUsSection)) {
+            bottleImage.src = 'assets/images/bottle_trulyyours.png';
+        } 
     });
 
     // Testimonials Slider (Optional Enhancement)
@@ -48,6 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
         area.addEventListener('touchstart', (event) => {
             createWaterDrop(event.touches[0].clientX, event.touches[0].clientY);
         });
+
+        // Water Splash Animation on Scroll (for .hero) and Hover (for .benefits)
+        if (area.classList.contains('hero')) {
+            window.addEventListener('scroll', () => {
+                if (isElementInViewport(area)) { // Check if .hero is in viewport
+                    createWaterSplash(area); 
+                }
+            });
+        } else if (area.classList.contains('benefits')) {
+            area.addEventListener('mouseover', () => {
+                createWaterSplash(area); 
+            });
+        }
     });
 
     function createWaterDrop(x, y) {
@@ -57,9 +71,34 @@ document.addEventListener('DOMContentLoaded', () => {
         waterDrop.style.top = y + 'px';
         document.body.appendChild(waterDrop);
 
-        // Remove the water drop after the animation is complete
         waterDrop.addEventListener('animationend', () => {
             waterDrop.remove();
         });
     }
-}); 
+
+    function createWaterSplash(area) {
+        const x = Math.random() * area.offsetWidth; // Random x position within the section
+        const y = Math.random() * area.offsetHeight; // Random y position within the section
+
+        const waterSplash = document.createElement('div');
+        waterSplash.classList.add('water-splash');
+        waterSplash.style.left = x + 'px';
+        waterSplash.style.top = y + 'px';
+        area.appendChild(waterSplash); // Append to the section
+
+        waterSplash.addEventListener('animationend', () => {
+            waterSplash.remove();
+        });
+    }
+
+    // Function to check if an element is in the viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+});
