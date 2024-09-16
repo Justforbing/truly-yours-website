@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => { 
-    // Bottle Label Animation on Scroll
     const bottleImage = document.getElementById('bottleImage');
 
     window.addEventListener('scroll', () => {
@@ -37,4 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show');
     });
+
+    // Water Drop Animation on Click/Touch
+    const animatableAreas = document.querySelectorAll('.hero, .benefits'); // Add other sections if needed
+
+    animatableAreas.forEach(area => {
+        area.addEventListener('click', (event) => {
+            createWaterDrop(event.clientX, event.clientY);
+        });
+
+        area.addEventListener('touchstart', (event) => {
+            createWaterDrop(event.touches[0].clientX, event.touches[0].clientY);
+        });
+    });
+
+    function createWaterDrop(x, y) {
+        const waterDrop = document.createElement('div');
+        waterDrop.classList.add('water-drop');
+        waterDrop.style.left = x + 'px';
+        waterDrop.style.top = y + 'px';
+        document.body.appendChild(waterDrop);
+
+        // Remove the water drop after the animation is complete
+        waterDrop.addEventListener('animationend', () => {
+            waterDrop.remove();
+        });
+    }
 });
