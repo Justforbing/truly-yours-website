@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => { 
     // Bottle Label Animation on Scroll
-    window.addEventListener('scroll', function() {
-        const bottleImage = document.getElementById('bottleImage');
+    const bottleImage = document.getElementById('bottleImage');
+
+    window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
 
         if (scrollPosition > 200) {
