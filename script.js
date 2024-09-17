@@ -100,5 +100,70 @@ document.addEventListener('DOMContentLoaded', () => {
             rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
+    } 
+
+    // GSAP Animations
+    gsap.from('.hero h1', { duration: 1, y: -50, opacity: 0, ease: "power4.out" }); // Hero heading animation
+    gsap.from('.hero p', { duration: 1.5, y: -30, opacity: 0, ease: "power4.out", delay: 0.5 }); // Hero paragraph animation
+    gsap.from('.btn', { duration: 1, scale: 0.8, opacity: 0, ease: "back.out(1.7)", stagger: 0.2 }); // Button animations
+
+    // Services Section Animations
+    gsap.from('.service-item', { 
+        duration: 1, 
+        y: 50, 
+        opacity: 0, 
+        ease: "power4.out", 
+        stagger: 0.2 
+    });
+
+    // Service Item Hover Effect
+    const serviceItems = document.querySelectorAll('.service-item');
+
+    serviceItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            gsap.to(item, { duration: 0.3, scale: 1.05, boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)" });
+        });
+
+        item.addEventListener('mouseleave', () => {
+            gsap.to(item, { duration: 0.3, scale: 1, boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)" });
+        });
+    });
+
+    // Why Choose Us Animations
+    const benefitsListItems = document.querySelectorAll('.benefits ul li');
+
+    gsap.from(benefitsListItems, { 
+        duration: 1, 
+        x: -50, 
+        opacity: 0, 
+        ease: "power4.out", 
+        stagger: 0.2,
+        delay: 0.5 // Delay after the heading animation
+    });
+
+    // Three.js 3D Scene
+    const canvas = document.getElementById('three-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas }); 
+
+    renderer.setSize(window.innerWidth, window.innerHeight); 
+
+    // Create a 3D object (example: a cube)
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green cube
+    const cube = new THREE.Mesh(geometry, material);
+
+    scene.add(cube);
+
+    camera.position.z = 5; // Set camera position
+
+    function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01; 
+        cube.rotation.y += 0.01; 
+        renderer.render(scene, camera); 
     }
+
+    animate(); 
 });
