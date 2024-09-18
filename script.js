@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } 
 
     window.addEventListener('scroll', () => {
-        // ... (Previous code for the water splash animation remains the same) ... 
+        // Water Splash Animation on Scroll (for .hero)
+        const heroSection = document.querySelector('.hero');
+        if (isElementInViewport(heroSection)) { 
+            createWaterSplash(heroSection); 
+        }
 
         // Change bottle animation when "Why Choose Us" is in viewport
         if (isElementInViewport(whyChooseUsSection)) {
@@ -57,14 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             createWaterDrop(event.touches[0].clientX, event.touches[0].clientY);
         });
 
-        // Water Splash Animation on Scroll (for .hero) and Hover (for .benefits)
-        if (area.classList.contains('hero')) {
-            window.addEventListener('scroll', () => {
-                if (isElementInViewport(area)) { // Check if .hero is in viewport
-                    createWaterSplash(area); 
-                }
-            });
-        } else if (area.classList.contains('benefits')) {
+        // Water Splash Animation on Hover (for .benefits)
+        if (area.classList.contains('benefits')) {
             area.addEventListener('mouseover', () => {
                 createWaterSplash(area); 
             });
@@ -137,21 +135,49 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: 0.5 // Delay after the heading animation
     });
 
-    // Three.js 3D Scene (Updated)
+    // Three.js 3D Scene (Corrected)
     const canvas = document.getElementById('three-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true }); // Enable alpha for transparency
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true }); 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    
-    // Create a 3D water bottle (replace with your model)
-    const loader = new THREE.GLTFLoader(); // Assuming you're using a glTF model
-    loader.load('assets/models/water_bottle.gltf', (gltf) => { // Replace 'water_bottle.gltf' with your model's path
-        const bottleModel = gltf.scene;
-        bottleModel.scale.set(0.5, 0.5, 0.5); // Adjust scale as needed
-        bottleModel.position.set(0, -1, 0); // Adjust position as needed
-        scene.add(bottleModel);
-    });
+
+    // Determine model file extension
+    const modelFilePath = 'assets/models/water_bottle.gltf'; // Replace with your actual model path
+    const modelFileExtension = modelFilePath.split('.').pop().toLowerCase();
+
+    // Load the 3D model using the appropriate loader
+    if (modelFileExtension === 'gltf' || modelFileExtension === 'glb') { // Check for glTF extensions
+        const loader = new THREE.GLTFLoader(); 
+        loader.load(modelFilePath, (gltf) => { 
+            const bottleModel = gltf.scene;
+            bottleModel.scale.set(0.5, 0.5, 0.5);
+            bottleModel.position.set(0, -1, 0); 
+            scene.add(bottleModel);
+        });
+    } else if (modelFileExtension === 'obj') {
+        const loader = new THREE.OBJLoader();
+        loader.load('assets/models/your-model.obj', (object) => { // Replace with your model path
+            // ... (Adjust scale, position, and add to scene) ... 
+        });
+    } else if (modelFileExtension === '3ds') {
+        const loader = new THREE.TDSLoader();
+        // You might need to specify a path to a manager for loading materials
+        const manager = new THREE.LoadingManager();
+        loader.setResourcePath('assets/models/'); // Set the base path for resources
+        loader.load('assets/models/your-model.3ds', (object) => {  // Replace with your model path
+            // ... (Adjust scale, position, and add to scene) ... 
+        }, 
+        // Optional: Add progress and error callbacks if needed
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        (error) => {
+            console.error('An error occurred loading the model:', error);
+        });
+    } else {
+        console.error('Unsupported 3D model format:', modelFileExtension);
+    } 
 
     // Add lights to the scene
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white ambient light
