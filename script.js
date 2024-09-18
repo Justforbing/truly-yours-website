@@ -1,12 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => { 
     const bottleImage = document.getElementById('bottleImage');
+    const whyChooseUsSection = document.getElementById('benefits');
+
+    // Function to check if an element is in the viewport (modified for mobile)
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.bottom > 0 && rect.right > 0 && 
+               rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+               rect.top < (window.innerHeight || document.documentElement.clientHeight);
+    } 
 
     window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
+        // ... (Previous code for the water splash animation remains the same) ... 
 
         // Change bottle animation when "Why Choose Us" is in viewport
-        const whyChooseUsSection = document.getElementById('benefits');
-
         if (isElementInViewport(whyChooseUsSection)) {
             bottleImage.src = 'assets/images/bottle_trulyyours.png';
         } 
@@ -89,17 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         waterSplash.addEventListener('animationend', () => {
             waterSplash.remove();
         });
-    }
-
-    // Function to check if an element is in the viewport
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
     } 
 
     // GSAP Animations
@@ -141,29 +137,36 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: 0.5 // Delay after the heading animation
     });
 
-    // Three.js 3D Scene
+    // Three.js 3D Scene (Updated)
     const canvas = document.getElementById('three-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas }); 
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true }); // Enable alpha for transparency
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    // Create a 3D water bottle (replace with your model)
+    const loader = new THREE.GLTFLoader(); // Assuming you're using a glTF model
+    loader.load('assets/models/water_bottle.gltf', (gltf) => { // Replace 'water_bottle.gltf' with your model's path
+        const bottleModel = gltf.scene;
+        bottleModel.scale.set(0.5, 0.5, 0.5); // Adjust scale as needed
+        bottleModel.position.set(0, -1, 0); // Adjust position as needed
+        scene.add(bottleModel);
+    });
 
-    renderer.setSize(window.innerWidth, window.innerHeight); 
+    // Add lights to the scene
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white ambient light
+    scene.add(ambientLight);
 
-    // Create a 3D object (example: a cube)
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green cube
-    const cube = new THREE.Mesh(geometry, material);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(1, 2, 3); // Adjust light direction
+    scene.add(directionalLight);
 
-    scene.add(cube);
-
-    camera.position.z = 5; // Set camera position
+    camera.position.z = 5; 
 
     function animate() {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01; 
-        cube.rotation.y += 0.01; 
-        renderer.render(scene, camera); 
+        requestAnimationFrame(animate); 
+        renderer.render(scene, camera);
     }
 
-    animate(); 
+    animate();
 });
